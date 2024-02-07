@@ -23,8 +23,7 @@ public:
         while(ans.size())
         {
             pair<char,int>x=ans.top();
-            for(int i=0;i<x.second;i++)
-                a+=x.first;
+                a.append(x.second,x.first);
             ans.pop();
                 
         }
