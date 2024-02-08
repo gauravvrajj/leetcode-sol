@@ -10,7 +10,7 @@ public:
         if(ggg[k]!=-1)
         return ggg[k];
         
-        return ggg[k]=min({1+helper(gg,i,k-gg[i],ggg),1+helper(gg,i+1,k-gg[i],ggg),helper(gg,i+1,k,ggg)});
+        return ggg[k]=min(1+helper(gg,i,k-gg[i],ggg),min(1+helper(gg,i+1,k-gg[i],ggg),helper(gg,i+1,k,ggg)));
     }
     int numSquares(int k) {
         
