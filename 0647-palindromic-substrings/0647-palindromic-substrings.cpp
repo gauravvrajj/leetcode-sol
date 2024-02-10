@@ -13,7 +13,7 @@ public:
         int res=0;
         for(int i=0;i<s.size();i++)
         {  
-            res+=cnt(s,i,i)+cnt(s,i,i+1); 
+            res+=(cnt(s,i,i)+cnt(s,i,i+1)); 
         }
         return res;
         
