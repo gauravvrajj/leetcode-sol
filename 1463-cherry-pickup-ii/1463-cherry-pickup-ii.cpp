@@ -28,7 +28,7 @@ public:
     }
     int cherryPickup(vector<vector<int>>& grid) {
         
-        vector<vector<vector<int>>>abc(71,vector<vector<int>>(71,vector<int>(71,-1)));
+        vector<vector<vector<int>>>abc(grid.size()+1,vector<vector<int>>(grid[0].size()+1,vector<int>(grid[0].size()+1,-1)));
         return gg(0,0,grid[0].size()-1,grid,abc);
     }
 };
