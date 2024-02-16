@@ -11,33 +11,28 @@ public:
 };
     int findLeastNumOfUniqueInts(vector<int>& arr, int k) {
         
-        unordered_map<int,int>gg;
+        unordered_map<int,int>mapp;
         for(auto i:arr)
         {
-            gg[i]++;
+            mapp[i]++;
         }
         
-        priority_queue<pair<int,int>,vector<pair<int,int>>,myComp>aa;
+        priority_queue<pair<int,int>,vector<pair<int,int>>,myComp>queuee;
         
-        for(auto i:gg)
+        for(auto i:mapp)
         {
-         aa.push({i.first,i.second});
+         queuee.push({i.first,i.second});
         }
         
-        while(aa.size())
+        while(queuee.size())
         {
-           pair<int,int>x=aa.top();
-            k=k-x.second;
+           pair<int,int>pairr=queuee.top();
+            k=k-pairr.second;
             if(k<0)
-            {
-                return aa.size();
-            }
-            else
-            {
-                aa.pop();
-                
-            }
+                return queuee.size();
             
+            else
+                queuee.pop();   
         }
         return 0;
         
