@@ -1,42 +1,20 @@
 class Solution {
 public:
-    int mostBooked(int n, vector<vector<int>>& meetings) {
-        vector<int> meetingCount(n, 0);
-        priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<pair<long long, int>>> usedRooms;
-        priority_queue<int, vector<int>, greater<int>> unusedRooms;
-        for (int i = 0; i < n; i++) {
-            unusedRooms.push(i);
+    int mostBooked(int n, vector<vector<int>>& meets) {
+    int cnt[101] = {};
+    sort(begin(meets), end(meets));
+    priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<pair<long long, int>>> pq;
+    for (int i = 0; i < n; ++i)
+        pq.push({meets[0][0], i});
+    for (auto &m : meets) {
+        while (pq.top().first < m[0]) {
+            pq.push({m[0], pq.top().second});
+            pq.pop();
         }
-        sort(meetings.begin(), meetings.end());
-
-        for (auto meeting : meetings) {
-            int start = meeting[0], end = meeting[1];
-
-            while (!usedRooms.empty() && usedRooms.top().first <= start) {
-                int room = usedRooms.top().second;
-                usedRooms.pop();
-                unusedRooms.push(room);
-            }
-            if (!unusedRooms.empty()) {
-                int room = unusedRooms.top();
-                unusedRooms.pop();
-                usedRooms.push({end, room});
-                meetingCount[room]++;
-            } else {
-                auto [roomAvailabilityTime, room] = usedRooms.top();
-                usedRooms.pop();
-                usedRooms.push({roomAvailabilityTime + end - start, room});
-                meetingCount[room]++;
-            }
-        }
-
-        int maxMeetingCount = 0, maxMeetingCountRoom = 0;
-        for (int i = 0; i < n; i++) {
-            if (meetingCount[i] > maxMeetingCount) {
-                maxMeetingCount = meetingCount[i];
-                maxMeetingCountRoom = i;
-            }
-        }
-        return maxMeetingCountRoom;
+        auto [start, room] = pq.top(); pq.pop();
+        pq.push({start + m[1] - m[0], room});
+        ++cnt[room];
     }
+    return max_element(begin(cnt), end(cnt)) - begin(cnt);
+}
 };
