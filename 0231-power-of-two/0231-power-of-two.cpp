@@ -1,10 +1,9 @@
 class Solution {
 public:
-    bool isPowerOfTwo(int n) {
+    bool isPowerOfTwo(int x) {
         
-        if (n == 0)
-        return false;
- 
-      return (ceil(log2(n)) == floor(log2(n)));
+       if(x<0) return false;
+    
+    return x && (!(x & (x - 1)));
     }
 };
