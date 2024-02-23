@@ -1,51 +1,45 @@
 class Solution {
 public:
-    
-   int ans=INT_MAX; 
-    void dfs(int sum,int n,vector<int>lis[],vector<vector<int>>&price,int src,int dst,int k)
+ 
+    int dfs(int n,vector<int>lis[],vector<vector<int>>&price,int src,int dst,int k,vector<vector<int>>&dp)
     {       
         if(src==dst)
-             {  ans=min(ans,sum);
-                 return;
-             }
+        return 0;
+             
+        if(k==-1)
+        return 100000;
+        
+        if(dp[src][k]!=-1)
+        return dp[src][k];
+        
+        int ans=100000;
          for(auto i:lis[src])
          {
-             if(k==-1)
-                 return;
-             dfs(sum+price[src][i],n,lis,price,i,dst,k-1);
+             
+            ans=min(ans, price[src][i]+dfs(n,lis,price,i,dst,k-1,dp));
                  
          }
+        return dp[src][k]=ans;
     }
-    int findCheapestPrice(int n, vector<vector<int>>& flights, int s, int d, int K) {
-        const int INF = 1e9;
-        vector<vector<int>> dp(K + 2, vector<int>(n, INF));
-        dp[0][s] = 0;        
-         for (int i = 1; i <= K + 1; ++i) {
-            dp[i][s] = 0;
-            for (const auto& x : flights)
-                  dp[i][x[1]] = min(dp[i][x[1]], dp[i-1][x[0]] + x[2]);    
-            }
-            return dp[K + 1][d] >= INF ? -1 : dp[K + 1][d];
-            
-        } 
+
     
-    
-//     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
+    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
         
-//         vector<vector<int>>price(101,vector<int>(101,0));
+        vector<vector<int>>price(101,vector<int>(101,0));
+        vector<vector<int>>dp(101,vector<int>(k+2,-1));
         
-//         for(auto i:flights)
-//         {
-//             price[i[0]][i[1]]=i[2];
-//         }
-//         vector<int>lis[n];
+        for(auto i:flights)
+        {
+            price[i[0]][i[1]]=i[2];
+        }
+        vector<int>lis[n];
       
         
-//         for(auto i:flights)
-//             lis[i[0]].push_back(i[1]);
-    
-//         dfs(0,n,lis,price,src,dst,k);
-//         return ans==INT_MAX?-1:ans;
-//     }
+        for(auto i:flights)
+            lis[i[0]].push_back(i[1]);
+         int as=dfs(n,lis,price,src,dst,k,dp);
+         return as==100000?-1:as;
+       
+    }
 };
     
