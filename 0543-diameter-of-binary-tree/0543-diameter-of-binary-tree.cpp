@@ -22,7 +22,7 @@ public:
         if(root->right!=NULL)
         b=1+d(root->right);
         int c=max(a,b);
-        ans=max(ans,max(c,a+b));
+        ans=max(ans,a+b);
         return c;
     }
     
