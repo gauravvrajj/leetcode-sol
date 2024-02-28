@@ -12,7 +12,7 @@
 class Solution {
 public:
     pair<int,int> ans{INT_MIN,INT_MIN};
-    void height(TreeNode*root,int h,char c)
+    void height(TreeNode*root,int h)
     {
        if(root==NULL)
            return;
@@ -21,14 +21,14 @@ public:
            ans.first=h;
            ans.second=root->val;
         }
-        height(root->left,h+1,'L');
-        height(root->right,h+1,'R');       
+        height(root->left,h+1);
+        height(root->right,h+1);       
     }
     
     
     int findBottomLeftValue(TreeNode* root) {
        char c;
-       height(root,0,'L'); 
+       height(root,0); 
         return ans.second;
     }
 };
