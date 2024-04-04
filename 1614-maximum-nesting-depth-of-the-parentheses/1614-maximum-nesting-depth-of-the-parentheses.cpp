@@ -5,10 +5,13 @@ public:
         for(int i=0;i<s.size();i++)
         {
             if(s[i]=='(')
+            {
                 count++;
+                maxx=max(maxx,count);
+            }
             else if(s[i]==')')
                 count--;
-            maxx=max(maxx,count);
+           
         }
         return maxx;
         
