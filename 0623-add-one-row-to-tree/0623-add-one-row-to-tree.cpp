@@ -26,15 +26,18 @@ public:
             {
               while(gg.size())
             {
-              TreeNode* x=gg.front()->left;
-              TreeNode* y=gg.front()->right;
+                  
+                 gg.front()->left=new TreeNode(val,gg.front()->left,NULL);
+                   gg.front()->right=new TreeNode(val,NULL,gg.front()->right);
+//               TreeNode* x=gg.front()->left;
+//               TreeNode* y=gg.front()->right;
              
-              gg.front()->left=new TreeNode(val);
-              gg.front()->right=new TreeNode(val);
-              if(x!=NULL)
-              gg.front()->left->left=x;
-              if(y!=NULL)
-              gg.front()->right->right=y;
+//               gg.front()->left=new TreeNode(val);
+//               gg.front()->right=new TreeNode(val);
+//               if(x!=NULL)
+//               gg.front()->left->left=x;
+//               if(y!=NULL)
+//               gg.front()->right->right=y;
               gg.pop();
             }
              break;
