@@ -11,8 +11,8 @@ public:
             pp[i]=(pp[i]-'0'-1+10)%10+'0';
             ans.push_back(pp);
         }
-        for(auto i:ans)
-            cout<<i<<" ";
+        // for(auto i:ans)
+        //     cout<<i<<" ";
         return ans;
     }
     int openLock(vector<string>& deadends, string target) {
