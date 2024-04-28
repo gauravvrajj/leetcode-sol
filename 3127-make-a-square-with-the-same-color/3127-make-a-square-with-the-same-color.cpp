@@ -26,12 +26,11 @@ public:
     // If no 2x2 square with at least 3 cells of the same color is found, return false
     // return false;
         
-        string g=g+grid[0][0]+grid[0][1]+grid[1][0]+grid[1][1];
-        // cout<<g<<" ";
-        string h=h+grid[0][1]+grid[0][2]+grid[1][1]+grid[1][2];
-        string i=i+grid[1][0]+grid[1][1]+grid[2][0]+grid[2][1];
-        string j=j+grid[1][1]+grid[1][2]+grid[2][1]+grid[2][2];
-                
+           string e = "";
+        string g=e+grid[0][0]+grid[0][1]+grid[1][0]+grid[1][1];
+        string h=e+grid[0][1]+grid[0][2]+grid[1][1]+grid[1][2];
+        string i=e+grid[1][0]+grid[1][1]+grid[2][0]+grid[2][1];
+        string j=e+grid[1][1]+grid[1][2]+grid[2][1]+grid[2][2];
         int blak=0,w=0;
         for(auto k:g)
         {
@@ -39,7 +38,7 @@ public:
                 w++;
             else blak++;
         }
-        if(w>=3||blak>=3)
+        if(w==3||blak==3||w==4||blak==4)
             return true;
         
         blak=0,w=0;
@@ -50,7 +49,7 @@ public:
             else blak++;
         }
         // cout<<w<<blak;
-        if(w>=3||blak>=3)
+        if(w==3||blak==3||w==4||blak==4)
             return true;
         
         blak=0,w=0;
@@ -60,7 +59,7 @@ public:
                 w++;
             else blak++;
         }
-        if(w>=3||blak>=3)
+        if(w==3||blak==3||w==4||blak==4)
             return true;
         blak=0,w=0;
         for(auto k:j)
@@ -69,7 +68,7 @@ public:
                 w++;
             else blak++;
         }
-        if(w>=3||blak>=3)
+        if(w==3||blak==3||w==4||blak==4)
             return true;
         
        return false; 
