@@ -7,9 +7,9 @@ public:
         while(left<=right)
         {
             if(nums[left]>0)return -1;
-            if(nums[left]*-1==nums[right])return nums[right];
+            if(-nums[left]==nums[right])return nums[right];
             
-            else if(nums[left]*-1>nums[right])left++;
+            else if(-nums[left]>nums[right])left++;
             else right--;
         }
         
