@@ -22,8 +22,7 @@ public:
         for(int i=0;i<grid.size();i++)
             for(int j=0;j<grid[0].size();j++)
             {
-                vector<vector<int>>gg=grid;
-                if(grid[i][j]!=0)dfs(gg,i,j,0);
+                if(grid[i][j]!=0)dfs(grid,i,j,0);
             }
         return ans==INT_MIN?0:ans;
     }
