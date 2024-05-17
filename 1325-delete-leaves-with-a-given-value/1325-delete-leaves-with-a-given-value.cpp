@@ -12,23 +12,18 @@
 class Solution {
 public:
     
-    void dfs(   TreeNode*root,int target)
+    void dfs(   TreeNode* &root,int target)
     {
       if(root==NULL)return;
         
         dfs(root->right,target);
-        if(root->right&&root->right->val==-1)
-        {
-            root->right=nullptr;
-        }
+
         dfs(root->left,target);
-        if(root->left&&root->left->val==-1)
-        {
-            root->left=nullptr;
-        }
+ 
         if(root->right==NULL&&root->left==NULL&&root->val==target)
         {
-            root->val=-1;
+            root=NULL;
+            delete(root);
             return;
         }
     }
@@ -36,7 +31,7 @@ public:
         
         
        dfs(root,target);
-        if(root->val==-1)return NULL;
+     
         return root;
         
     }
