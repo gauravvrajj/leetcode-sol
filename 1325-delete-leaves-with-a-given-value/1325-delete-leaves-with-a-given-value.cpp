@@ -21,11 +21,6 @@ public:
         {
             root->right=nullptr;
         }
-        if(root->right==NULL&&root->left==NULL&&root->val==target)
-        {
-            root->val=-1;
-            return;
-        }
         dfs(root->left,target);
         if(root->left&&root->left->val==-1)
         {
