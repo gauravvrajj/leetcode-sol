@@ -1,8 +1,7 @@
 class Solution {
 public:
     bool checkSubarraySum(vector<int>& nums, int k) {
-        vector<int>x={1,3,0,6};
-        if(nums==x&&k==6)return true;
+        
         if(nums.size()<=1)return false;
         unordered_map<int,int>gg;
         gg[0]=1;
@@ -16,7 +15,10 @@ public:
               if(zero>=2)return true;
               continue;
           }
-          else zero=0;
+          else
+          { if(zero&&gg.count(ans%k))return true;
+              zero=0;
+          }
           if(nums[i]!=0&&nums[i]%k==0&&ans%k!=0)
           {
               count++;
