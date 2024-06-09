@@ -10,9 +10,8 @@ public:
         {   
             co+=nums[i];
             int rem=co%k;
-            // cout<<rem<<" ";
-            if(rem<0)
-                rem+=k;
+            if(rem>0)
+                rem-=k;
             if(x.find(rem)==x.end())
                 x[rem]++;
             else
