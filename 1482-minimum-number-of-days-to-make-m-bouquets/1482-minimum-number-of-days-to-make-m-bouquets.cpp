@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    bool fun(vector<int>b,int m,int k,int mid)
+    bool fun(vector<int>&b,int m,int k,int mid)
     {
         for(int i=0;i<b.size();)
         {
