@@ -1,35 +1,20 @@
 class Solution {
 public:
-    int fun(vector<int>& nums, int m){
-        if(m<0)return 0;
-        int ans=0,count=0,l=0,r=0;
-        while(r<nums.size())
-        {
-            ans+=nums[r];
-            while(ans>m)
-            {
-               ans-=nums[l] ;
-                l++;
+    int numberOfSubarrays(vector<int>& nums, int k) {
+        int currSum = 0, subarrays = 0;
+        unordered_map<int, int> prefixSum;
+        prefixSum[currSum] = 1;
+
+        for (int i = 0; i < nums.size(); i++) {
+            currSum += nums[i] % 2;
+        
+            if (prefixSum.find(currSum - k) != prefixSum.end()) {
+                subarrays = subarrays + prefixSum[currSum - k];
             }
-            
-            count+=r-l+1;
-            r++;
-            
+           
+            prefixSum[currSum]++;
         }
-        return count;
-    }
-    int numberOfSubarrays(vector<int>& nums, int m) {
-      
-        for(int i=0;i<nums.size();i++)
-        {
-            if(nums[i]%2==0)
-              nums[i]=0;  
-            else
-                nums[i]=1;
-        }
-        
-        return fun(nums,m)-fun(nums,m-1);
-        
-        
+
+        return subarrays;
     }
 };
