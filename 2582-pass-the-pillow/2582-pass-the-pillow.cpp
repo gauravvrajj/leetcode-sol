@@ -13,7 +13,6 @@ public:
                   i--;
                   time--;
                 } 
-                continue;
             }
             
         }
