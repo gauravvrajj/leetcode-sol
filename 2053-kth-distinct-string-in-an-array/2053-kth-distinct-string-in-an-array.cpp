@@ -7,15 +7,14 @@ public:
         for(auto i:arr)
             gg[i]++;
             
-        
-        vector<string>x;
+    
         for(auto i:arr)
         {
-            if(gg[i]==1)
-            x.push_back(i);
+            if(gg[i]==1&&--k==0)
+            return i;
         }
-        if(k>x.size())return "";
-        return x[k-1];
+       
+        return "";
         
     }
 };
